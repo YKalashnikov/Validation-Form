@@ -1,12 +1,5 @@
- export const validate = input => {
-   const error={};
- if(!input.username){
- error.username = "Enter your Username"
- } else if (input.username !== 'Yurii'){
-    error.username = 'Username is incorrect';
- }
- if(!input.password){
-    error.password = 'Enter your Password';
- }
- return error;
- }
+export const requiredInput=(input)=>
+    input? undefined : `Input is required`;
+
+    export const correctInput = input => 
+    input !=='Yurii' ? 'Incorrect Username' : undefined
