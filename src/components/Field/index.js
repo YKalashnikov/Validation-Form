@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
- const myInput = props =>{
+ const myInput = (props) =>{
     const {input, type, placeholder, meta}=props;
     return (
         <Fragment>

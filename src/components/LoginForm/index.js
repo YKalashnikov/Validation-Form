@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import myInput from '../Field/index.js';
-import {requiredInput, correctInput} from '/Users/yuriikalashnikov/Desktop/auth/form/src/Validation/index.js'
+import {requiredInput, correctInput, matchInput} from '/Users/yuriikalashnikov/Desktop/auth/form/src/Validation/index.js';
+
 
 
 class LoginForm extends Component {
@@ -12,19 +13,26 @@ class LoginForm extends Component {
       return (
         <form onSubmit={handleSubmit}>
           <Field
+            name = "username"
             validate={[requiredInput, correctInput]}
-            
-            component={myInput}
-            
+            component={myInput}  
             type="text"
             placeholder="Username"
           />
           <Field
+            name = 'password'
             validate={[requiredInput]}
             component={myInput}
             type="password"
             placeholder="Password"
           />
+          <Field
+            name="confirm-password"
+            component={myInput}
+            type="password"
+            placeholder="Confirm Password"
+            validate={[requiredInput, matchInput]}
+/>
           <button type="submit" label="submit">Submit</button>
         </form>
       );
@@ -32,7 +40,8 @@ class LoginForm extends Component {
   }
   
 LoginForm = reduxForm ({
-    form: 'login'
+    form: 'login',
+   
 })(LoginForm);
 
 export default LoginForm;
