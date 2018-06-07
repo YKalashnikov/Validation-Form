@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
+import { SubmissionError} from 'redux-form';
 import LoginForm from '/Users/yuriikalashnikov/Desktop/auth/form/src/components/LoginForm/index.js'
+
 
 
 
@@ -7,12 +9,18 @@ import LoginForm from '/Users/yuriikalashnikov/Desktop/auth/form/src/components/
 
 class App extends Component {
 
-  submit = value=>{
-    window.alert (JSON.stringify (value))
-  }
+  submit = input=>{
+    if(['Yurii', 'Alex', 'Mike', 'Sveta'].includes (input.username)){
+      throw new SubmissionError ({
+        username : "Username already taken",
+      });
+    }else{
+      window.alert (JSON.stringify(input))
+    }
+};
   getInitialValues(){
     return{
-      username:'Yurii',
+      username:'Dima',
       password:''
     }
   }
